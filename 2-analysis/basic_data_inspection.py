@@ -26,10 +26,14 @@ class SummaryStatisticsInspectionStrategy(DataInspectionStrategy):
 # Step 3: Implement the Context
 class DataInspector:
     def __init__(self, strategy: DataInspectionStrategy):
-        self.strategy = strategy
+        self._strategy = strategy
+
+    def set_strategy(self, strategy: DataInspectionStrategy):
+        self._strategy = strategy
+
 
     def execute_inspection(self, df: pd.DataFrame):
-        self.strategy.inspect(df)
+        self._strategy.inspect(df)
 
 # Step 4: Use the Strategy in the Context
 if __name__ == "__main__":
